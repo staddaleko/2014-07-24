@@ -24,7 +24,7 @@ namespace WpfApplication1doWCF
     {
         bool serviceStarted = false;
         ServiceHost myServiceHost = null;
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -52,6 +52,39 @@ namespace WpfApplication1doWCF
 
                 serviceStarted = true;
                 button1.Content = "Stop Service";
+            }
+        }
+
+
+
+        private void button1_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+            if (serviceStarted)
+            {
+               myServiceHost.Close();
+                MessageBox.Show("Kończę połączenie", "See ya!", MessageBoxButton.OK);
+                myServiceHost.Close();
+            }
+            else
+            {
+                MessageBox.Show("Połączenie nieaktywne. Papapa!", "See ya!", MessageBoxButton.OK);
+            }
+
+
+        }
+
+        private void Grid_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+            if (serviceStarted)
+            {
+                myServiceHost.Close();
+                MessageBox.Show("Kończę połączenie", "See ya!", MessageBoxButton.OK);
+            }
+            else
+            {
+                MessageBox.Show("Połączenie nieaktywne. Papapa!", "See ya!", MessageBoxButton.OK);
             }
         }
     }
